@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>DanielaFit</title>
+  <meta name="description" content="Entrenamiento personalizado para bajar grasa, tonificar, mejorar condición, postura y movilidad." />
+  <meta name="theme-color" content="#21272d" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="DanielaFit" />
+  <link rel="apple-touch-icon" href="icons/icon-180.png" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="app" class="app-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">DanielaFit</p>
+        <h1 id="screenTitle">Hoy</h1>
+      </div>
+      <div class="score-pill" aria-label="Puntuación diaria">
+        <span id="dailyScore">--</span>
+        <small>/100</small>
+      </div>
+    </header>
+
+    <main id="content" class="content" tabindex="-1"></main>
+
+    <nav class="tabbar" aria-label="Navegación principal">
+      <button class="tab active" data-screen="today" type="button"><span>⌁</span>Hoy</button>
+      <button class="tab" data-screen="workout" type="button"><span>▣</span>Rutina</button>
+      <button class="tab" data-screen="progress" type="button"><span>△</span>Progreso</button>
+      <button class="tab" data-screen="history" type="button"><span>☰</span>Historial</button>
+      <button class="tab" data-screen="profile" type="button"><span>◎</span>Perfil</button>
+    </nav>
+  </div>
+
+  <template id="exerciseCardTemplate">
+    <article class="exercise-card">
+      <div class="exercise-top">
+        <div>
+          <p class="exercise-tag"></p>
+          <h3 class="exercise-name"></h3>
+        </div>
+        <button class="ghost small technique-toggle" type="button">Técnica</button>
+      </div>
+      <div class="prescription"></div>
+      <div class="weight-line"></div>
+      <div class="technique hidden"></div>
+      <div class="log-grid">
+        <label>Peso usado <input class="actual-weight" type="number" inputmode="decimal" min="0" step="1" /></label>
+        <label>Reps logradas <input class="actual-reps" type="number" inputmode="numeric" min="0" step="1" /></label>
+        <label>Esfuerzo 1-10 <input class="actual-rpe" type="number" inputmode="numeric" min="1" max="10" step="1" /></label>
+      </div>
+    </article>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>
