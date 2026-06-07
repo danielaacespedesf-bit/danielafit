@@ -202,6 +202,28 @@ input:focus, select:focus, textarea:focus { border-color: var(--accent); box-sha
   letter-spacing: .08em;
   text-transform: uppercase;
 }
+
+.exercise-visual {
+  margin: 10px 0 12px;
+}
+.exercise-image {
+  width: 100%;
+  display: block;
+  border-radius: 18px;
+  border: 1px solid var(--line);
+  background: #fff;
+  box-shadow: 0 10px 24px rgba(33,39,45,.06);
+}
+.exercise-caption {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: .78rem;
+  text-align: center;
+}
+.exercise-image:active {
+  transform: scale(.995);
+}
+
 .prescription, .weight-line, .technique {
   padding: 10px 12px;
   border-radius: 14px;

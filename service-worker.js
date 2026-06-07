@@ -1,4 +1,4 @@
-const CACHE_NAME = 'danielafit-cache-v1.0.0';
+const CACHE_NAME = 'danielafit-cache-v1.1.0';
 const ASSETS = [
   './',
   './index.html',
@@ -7,7 +7,28 @@ const ASSETS = [
   './manifest.json',
   './icons/icon-180.png',
   './icons/icon-192.png',
-  './icons/icon-512.png'
+  './icons/icon-512.png',
+  './exercises/legPress.svg',
+  './exercises/hipThrust.svg',
+  './exercises/dbRDL.svg',
+  './exercises/hamCurl.svg',
+  './exercises/cablePullThrough.svg',
+  './exercises/deadBug.svg',
+  './exercises/chestPress.svg',
+  './exercises/seatedRow.svg',
+  './exercises/latPulldown.svg',
+  './exercises/facePull.svg',
+  './exercises/dbInclinePress.svg',
+  './exercises/pallof.svg',
+  './exercises/gobletBoxSquat.svg',
+  './exercises/cableRow.svg',
+  './exercises/stepUpLow.svg',
+  './exercises/bikeIntervals.svg',
+  './exercises/inclineWalk.svg',
+  './exercises/catCow.svg',
+  './exercises/thoracicOpen.svg',
+  './exercises/bandPullApart.svg',
+  './exercises/plank.svg'
 ];
 
 self.addEventListener('install', event => {

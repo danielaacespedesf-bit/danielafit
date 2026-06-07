@@ -138,6 +138,10 @@ const exerciseLibrary = {
   }
 };
 
+Object.keys(exerciseLibrary).forEach(id => {
+  exerciseLibrary[id].image = `exercises/${id}.svg`;
+});
+
 const plans = {
   1: {
     title: 'Pierna + glúteos', type: 'gym', focus: 'Bajar grasa, tonificar piernas/glúteos y cuidar espalda.',
@@ -421,6 +425,10 @@ function makeExerciseCard(id, status) {
   const last = lastLogsForExercise(id, 1)[0];
   tpl.querySelector('.exercise-tag').textContent = ex.tag;
   tpl.querySelector('.exercise-name').textContent = ex.name;
+  const image = tpl.querySelector('.exercise-image');
+  image.src = ex.image;
+  image.alt = `Referencia visual de ${ex.name}`;
+  image.addEventListener('click', () => window.open(ex.image, '_blank'));
   tpl.querySelector('.prescription').textContent = status.mode === 'light' || status.mode === 'deload'
     ? `${ex.prescription} · versión controlada`
     : ex.prescription;
