@@ -76,9 +76,3 @@ La forma más práctica es publicarla con GitHub Pages y abrirla desde Safari en
 - `manifest.json`: configuración PWA.
 - `service-worker.js`: cache/offline.
 - `icons/`: íconos de la app.
-
-
-Novedad v3: cada ejercicio ahora muestra una imagen/ilustración de referencia para mayor claridad visual.
-
-
-Novedad v5: imágenes SVG inline dentro de app.js, sin rutas externas. Incluye botón 'Forzar actualización de la app' en Perfil y assets con ?v=5.0.0 para romper caché vieja.

@@ -1,10 +1,10 @@
-const CACHE_NAME = 'danielafit-cache-v5.0.0';
+const CACHE_NAME = 'danielafit-cache-v7.0.0';
 const ASSETS = [
   './',
-  './index.html?v=5.0.0',
-  './styles.css?v=5.0.0',
-  './app.js?v=5.0.0',
-  './manifest.json?v=5.0.0',
+  './index.html?v=7.0.0',
+  './styles.css?v=7.0.0',
+  './app.js?v=7.0.0',
+  './manifest.json?v=7.0.0',
   './icons/icon-180.png',
   './icons/icon-192.png',
   './icons/icon-512.png'
@@ -31,12 +31,12 @@ self.addEventListener('fetch', event => {
       const clone = response.clone();
       caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
       return response;
-    }).catch(() => caches.match(event.request).then(cached => cached || caches.match('./index.html?v=5.0.0'))));
+    }).catch(() => caches.match(event.request).then(cached => cached || caches.match('./index.html?v=7.0.0'))));
     return;
   }
   event.respondWith(caches.match(event.request).then(cached => cached || fetch(event.request).then(response => {
     const clone = response.clone();
     caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
     return response;
-  }).catch(() => caches.match('./index.html?v=5.0.0'))));
+  }).catch(() => caches.match('./index.html?v=7.0.0'))));
 });
