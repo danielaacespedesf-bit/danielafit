@@ -10,8 +10,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="DanielaFit" />
   <link rel="apple-touch-icon" href="icons/icon-180.png" />
-  <link rel="manifest" href="manifest.json" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="manifest" href="manifest.json?v=5.0.0" />
+  <link rel="stylesheet" href="styles.css?v=5.0.0" />
 </head>
 <body>
   <div id="app" class="app-shell">
@@ -47,7 +47,7 @@
         <button class="ghost small technique-toggle" type="button">Técnica</button>
       </div>
       <figure class="exercise-visual">
-        <img class="exercise-image" src="" alt="" loading="lazy" />
+        <div class="exercise-illustration" role="img" aria-label="Referencia visual del ejercicio"></div>
         <figcaption class="exercise-caption">Referencia visual del ejercicio</figcaption>
       </figure>
       <div class="prescription"></div>
@@ -61,6 +61,6 @@
     </article>
   </template>
 
-  <script src="app.js"></script>
+  <script src="app.js?v=5.0.0"></script>
 </body>
 </html>
