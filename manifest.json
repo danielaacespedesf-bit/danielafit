@@ -1,8 +1,8 @@
 {
   "name": "DanielaFit",
   "short_name": "DanielaFit",
-  "description": "App privada de entrenamiento personalizado para bajar grasa, tonificar, mejorar condición física y cuidar espalda/cuello. Versión v5 con imágenes inline.",
-  "start_url": "./index.html?v=5.0.0",
+  "description": "App privada de entrenamiento personalizado para bajar grasa, tonificar, mejorar condición física y cuidar espalda/cuello.",
+  "start_url": "./index.html?v=8.0.0",
   "scope": "./",
   "display": "standalone",
   "orientation": "portrait",

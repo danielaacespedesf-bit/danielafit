@@ -1,13 +1,34 @@
-const CACHE_NAME = 'danielafit-cache-v5.0.0';
+const CACHE_NAME = 'danielafit-cache-v8.0.0';
 const ASSETS = [
   './',
-  './index.html?v=5.0.0',
-  './styles.css?v=5.0.0',
-  './app.js?v=5.0.0',
-  './manifest.json?v=5.0.0',
+  './index.html?v=8.0.0',
+  './styles.css?v=8.0.0',
+  './app.js?v=8.0.0',
+  './manifest.json?v=8.0.0',
   './icons/icon-180.png',
   './icons/icon-192.png',
-  './icons/icon-512.png'
+  './icons/icon-512.png',
+  './exercise-images/legPress.webp',
+  './exercise-images/hipThrust.webp',
+  './exercise-images/dbRDL.webp',
+  './exercise-images/hamCurl.webp',
+  './exercise-images/cablePullThrough.webp',
+  './exercise-images/deadBug.webp',
+  './exercise-images/chestPress.webp',
+  './exercise-images/seatedRow.webp',
+  './exercise-images/latPulldown.webp',
+  './exercise-images/facePull.webp',
+  './exercise-images/dbInclinePress.webp',
+  './exercise-images/pallof.webp',
+  './exercise-images/gobletBoxSquat.webp',
+  './exercise-images/cableRow.webp',
+  './exercise-images/stepUpLow.webp',
+  './exercise-images/bikeIntervals.webp',
+  './exercise-images/inclineWalk.webp',
+  './exercise-images/catCow.webp',
+  './exercise-images/thoracicOpen.webp',
+  './exercise-images/bandPullApart.webp',
+  './exercise-images/plank.webp',
 ];
 
 self.addEventListener('install', event => {
@@ -31,12 +52,12 @@ self.addEventListener('fetch', event => {
       const clone = response.clone();
       caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
       return response;
-    }).catch(() => caches.match(event.request).then(cached => cached || caches.match('./index.html?v=5.0.0'))));
+    }).catch(() => caches.match(event.request).then(cached => cached || caches.match('./index.html?v=8.0.0'))));
     return;
   }
   event.respondWith(caches.match(event.request).then(cached => cached || fetch(event.request).then(response => {
     const clone = response.clone();
     caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
     return response;
-  }).catch(() => caches.match('./index.html?v=5.0.0'))));
+  }).catch(() => caches.match('./index.html?v=8.0.0'))));
 });
