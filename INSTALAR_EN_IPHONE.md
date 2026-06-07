@@ -24,3 +24,6 @@ Puedes abrir `index.html` directamente en Chrome/Edge. Para probarla como PWA/of
 
 
 Versión v8: cada ejercicio muestra una foto real de referencia dentro de la app.
+
+
+Versión v9: las fotos reales están embebidas dentro de app.js. No depende de la carpeta exercise-images ni de rutas externas.

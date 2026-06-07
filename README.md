@@ -79,3 +79,6 @@ La forma más práctica es publicarla con GitHub Pages y abrirla desde Safari en
 
 
 Versión v8: cada ejercicio muestra una foto real de referencia dentro de la app.
+
+
+Versión v9: las fotos reales están embebidas dentro de app.js. No depende de la carpeta exercise-images ni de rutas externas.
