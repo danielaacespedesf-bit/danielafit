@@ -20,7 +20,8 @@ const defaultState = {
   settings: {
     quickModeMinutes: 25,
     conservativePainLevel: 6,
-    weeklyStepTarget: 7000
+    weeklyStepTarget: 7000,
+    testDayOverride: null
   },
   checkins: {},
   logs: [],
@@ -198,8 +199,16 @@ function getTodayCheckin() {
   return state.checkins[key];
 }
 
+function getEffectiveDayIndex() {
+  const override = state.settings?.testDayOverride;
+  if (override === null || override === undefined || override === '') return new Date().getDay();
+  return Number(override);
+}
+
 function getPlanForDate(date = new Date()) {
-  return plans[date.getDay()];
+  const override = state.settings?.testDayOverride;
+  if (override === null || override === undefined || override === '') return plans[date.getDay()];
+  return plans[Number(override)];
 }
 
 function getWeekNumberSinceStart() {
@@ -291,7 +300,7 @@ function renderToday() {
   const content = document.getElementById('content');
   content.innerHTML = `
     <section class="card dark hero">
-      <p class="eyebrow">${dayNames[new Date().getDay()]}</p>
+      <p class="eyebrow">${dayNames[getEffectiveDayIndex()]}${state.settings.testDayOverride !== null && state.settings.testDayOverride !== undefined && state.settings.testDayOverride !== '' ? ' · modo prueba' : ''}</p>
       <h2>${plan.title}</h2>
       <p class="muted">${plan.focus}</p>
       <div class="row">
@@ -658,6 +667,25 @@ function renderProfile() {
       <p><strong>Peso exacto:</strong> la primera semana calibra. Después, la app sube/mantiene/baja según reps, esfuerzo y dolor.</p>
     </section>
     <section class="card">
+      <h2>Modo prueba</h2>
+      <p class="muted small-text">Úsalo solo para revisar ejercicios de otros días sin cambiar la fecha del iPhone.</p>
+      <form id="testModeForm">
+        <label>Ver rutina como si fuera
+          <select name="testDayOverride">
+            <option value="" ${state.settings.testDayOverride === null || state.settings.testDayOverride === undefined || state.settings.testDayOverride === '' ? 'selected' : ''}>Día real automático</option>
+            <option value="1" ${Number(state.settings.testDayOverride) === 1 ? 'selected' : ''}>Lunes · Pierna + glúteos</option>
+            <option value="2" ${Number(state.settings.testDayOverride) === 2 ? 'selected' : ''}>Martes · Tenis + movilidad</option>
+            <option value="3" ${Number(state.settings.testDayOverride) === 3 ? 'selected' : ''}>Miércoles · Torso + postura</option>
+            <option value="4" ${Number(state.settings.testDayOverride) === 4 ? 'selected' : ''}>Jueves · Tenis + core</option>
+            <option value="5" ${Number(state.settings.testDayOverride) === 5 ? 'selected' : ''}>Viernes · Full body funcional</option>
+            <option value="6" ${Number(state.settings.testDayOverride) === 6 ? 'selected' : ''}>Sábado · Descanso</option>
+            <option value="0" ${Number(state.settings.testDayOverride) === 0 ? 'selected' : ''}>Domingo · Descanso</option>
+          </select>
+        </label>
+        <button class="secondary full" type="submit">Aplicar modo prueba</button>
+      </form>
+    </section>
+    <section class="card">
       <h2>Privacidad</h2>
       <p class="muted">Los datos se guardan en este navegador/dispositivo. No hay login, nube ni servidor.</p>
       <button class="danger full" id="resetData" type="button">Borrar todos los datos</button>
@@ -678,6 +706,15 @@ function renderProfile() {
     saveState();
     alert('Perfil guardado.');
     renderProfile();
+  });
+  document.getElementById('testModeForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const form = new FormData(e.currentTarget);
+    const value = form.get('testDayOverride');
+    state.settings.testDayOverride = value === '' ? null : Number(value);
+    saveState();
+    currentScreen = 'today';
+    render();
   });
   document.getElementById('resetData').addEventListener('click', () => {
     if (confirm('¿Borrar todos los datos de DanielaFit en este iPhone/navegador?')) {
